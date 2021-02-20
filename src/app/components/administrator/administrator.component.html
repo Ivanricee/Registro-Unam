@@ -1,0 +1,360 @@
+<app-navbar class="navar"></app-navbar>
+<button type="button" (click)="logOut()" class="col-md-2 col-md-push-9 btn-outline-primary btn btn-primary buttonSesionadm center-block" >Cerrar Sesion</button>
+<div class="container animated fadeIn fast col-xs-12 " *ngIf="mensaje==false">
+<div class=" text-center">
+  <div class="btn-group" role="group" aria-label="..." style="margin: 1em;">
+    <button type="button" class="btn btn-default"
+      routerLinkActive="active"
+      (click)="getAllUsermessages()">Ver mensajes</button>
+  </div>
+</div>
+
+  <div class="col-xs-12 divBackground text-center">
+    <div class="col-xs-12 row">
+      <div class="col-xs-3">
+        <p (click)="filtrarEstatus(0)" class="badgePago text-center  btn-three a">Sin pago: <span class="badge">{{this.estatusNoPago}}</span></p><!-- PENDIENTE orange-->
+      </div>
+      <div class="col-xs-3">
+        <p (click)="filtrarEstatus(1)" class="badgePago text-center btn-three b">Pagos por aprobar: <span class="badge">{{this.estatusPendiente}}</span></p><!-- PENDIENTE orange-->
+      </div>
+      <div class="col-xs-3">
+        <p (click)="filtrarEstatus(2)"  class="badgePago text-center btn-three c">Pagos Aceptados: <span class="badge">{{this.estatusAceptado}}</span></p><!-- PENDIENTE orange-->
+      </div>
+      <div class="col-xs-3">
+        <p (click)="filtrarEstatus(3)" class="badgePago text-center btn-three d">Pagos rechazados: <span class="badge">{{this.estatusRechazado}}</span></p><!-- PENDIENTE orange-->
+
+      </div>
+
+      <div class="col-xs-2 col-xs-push-5 center-block" style="margin-top:1.5em;">
+
+          <label class="label-control">Pagos por página</label>
+          <select class="form-control input-sm col-xs-2" [(ngModel)]="rowsOnPage">
+              <option [ngValue]="5">5</option>
+              <option [ngValue]="10">10</option>
+              <option [ngValue]="15">15</option>
+          </select>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="col-xs-12 divBackground">
+
+      <table class="table table-striped table-responsive  animated fadeIn fast " [mfData]="data_user | filterBy : filtro_data" #mf="mfDataTable" #mf="mfDataTable"
+                   [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+      <thead>
+      <tr>
+          <th class="col-xs-3">
+              <mfDefaultSorter by="paterno">Usuario</mfDefaultSorter>
+          </th>
+          <th class="col-xs-9">
+              <mfDefaultSorter by="archivo">Pago</mfDefaultSorter>
+          </th>
+      </tr>
+
+      </thead>
+      <tbody class=" animated fadeIn fast ">
+      <tr *ngFor="let item of mf.data" class="tr-data-user">
+
+          <td class="col-xs-3">
+            <small>Número de referencia:</small>
+            <h1>{{item.noReferencia}}</h1>
+            <!--Esconder cuando s-->
+            <p *ngIf="item.estatus == 0 " style="background-color:#bdc3c7"
+            class="labelPago"
+            [ngClass]="{ 'quitar-label-estado': data_estatus['id_persona'] == item.id_persona}">Sin pago</p><!-- NO PAGADO gray-->
+
+            <p *ngIf="item.estatus == 1 " style="background-color:#f39c12"
+            class="labelPago"
+            [ngClass]="{ 'quitar-label-estado': data_estatus['id_persona'] == item.id_persona}">Pago por aprobar</p><!-- PENDIENTE orange-->
+
+            <p *ngIf="item.estatus == 2 " style="background-color:#2ecc71"
+            class="labelPago  animated fadeIn fast "
+            [ngClass]="{ 'quitar-label-estado': data_estatus['id_persona'] == item.id_persona}">Pago aceptado</p><!-- ACEPTADO green-->
+
+            <p *ngIf="item.estatus == 3 " style="background-color:#e74c3c"
+            class="labelPago  animated fadeIn fast "
+            [ngClass]="{ 'quitar-label-estado': data_estatus['id_persona'] == item.id_persona}">Pago rechazado</p><!-- RECHAZADO-->
+
+            <p *ngIf="data_estatus['id_persona'] == item.id_persona && estatusLabel == 2"
+            style="background-color:#2ecc71" class="labelPago  animated fadeIn fast ">Pago aceptado</p><!-- RECHAZADO-->
+
+            <p *ngIf="data_estatus['id_persona'] == item.id_persona && estatusLabel == 3"
+            style="background-color:#e74c3c" class="labelPago  animated fadeIn fast ">Pago rechazado</p><!-- RECHAZADO-->
+
+            <hr>
+            <div class="col-xs-12" style="background-color:#eeeeee; padding-top:.8em">
+                  <p class="text-left ">
+                  <span class="glyphicon glyphicon-user"
+                  aria-hidden="true"
+                    style="color: #337ab7;">
+                  </span>  {{item.paterno+" "+item.materno+" "+item.nombre}}</p>
+
+                  <p class="text-left ">
+                  <span class="glyphicon glyphicon-envelope"
+                  aria-hidden="true"
+                    style="color: #337ab7;">
+                  </span>  {{ item.email }}</p>
+
+                  <p class="text-left ">
+                    <span class="glyphicon glyphicon-earphone"
+                    aria-hidden="true"
+                    style="color: #337ab7;"></span>
+                    {{ item.telefono }}</p>
+
+                    <p class="text-left "><small class="col-xs-12">Trabaja actualmente en: </small>
+                      <span class="glyphicon glyphicon-education"
+                      aria-hidden="true"
+                      style="color: #337ab7;"></span>
+                      {{ item.escuelactual }}</p>
+                <!--  <p>{{ item['archivo'].substring(  item['archivo'].length-3, item['archivo'].length)}}</p>-->
+                  <hr>
+            </div>
+
+          <!--  <div class="col-xs-10 col-xs-offset-1 " > -->
+          <!--  </div>-->
+
+          <div class="col-xs-12 tableButtons">
+            <small>Comentarios:</small>
+            <textarea trim
+              class="form-control"
+              style="min-width: 100%"
+              #comentarioEstatus
+              [(ngModel)]="defaultValue"
+              maxlength="250" minlength="10"></textarea>
+            <button type="button" class="btn btn-primary"
+            style="margin-bottom: .7em; margin-top:.7em;"
+            (click)="enviarComentario(item.id_persona, comentarioEstatus.value);">Enviar comentario</button>
+
+            <p *ngIf="comentarioSuccess == true && data_comentario['id_persona']  == item.id_persona"
+            [ngClass]="{ 'quitar-label-estado': comentarioSuccess == false, 'fadeOut': comentarioSuccess == true}"
+            style="background-color:#2ecc71; margin-bottom: 3em; margin-top:.7em;"
+            class="labelPago  animated fadeIn fast col-xs-12"> Mensaje enviado</p>
+          </div>
+
+          </td>
+          <td  class="col-xs-9">
+            <h1 *ngIf="item.archivo == ''">Sin pago</h1>
+            <div *ngIf="item['archivo'].substring(  item['archivo'].length-3, item['archivo'].length)  !== 'pdf' "
+                  class="col-xs-12  imgTablePago center-block">
+                <img *ngIf="item['archivo'] !== ''"
+                class="text-center center-block"
+                style="vertical-align: middle;"
+                [src]="'http://localhost/angularTutorial/angularLearn/registro/back/controller/'+item.archivo">
+            </div>
+
+            <div   class="col-xs-12" *ngIf="item['archivo'].substring(  item['archivo'].length-3, item['archivo'].length)  == 'pdf'">
+
+             <iframe [src]=" 'http://localhost/angularTutorial/angularLearn/registro/back/controller/'+item.archivo | safe"
+             style="width:100%; height:36em;">
+
+            </iframe>
+            </div>
+
+            <div class="col-xs-12 tableButtons" style="text-align:center; margin-bottom:1.5em">
+              <button type="button"
+              class="btn btn-success"
+              [disabled]="botonEstado == false || item.estatus == 0 "
+              (click)="aceptarPago(item.id_persona, 2, item.estatus)" >Aceptar</button>
+
+              <button type="button"
+              class="btn btn-danger "
+              [disabled]="botonEstado == false || item.estatus == 0"
+              (click)="aceptarPago(item.id_persona, 3, item.estatus)"
+              style="background-color:#c0392b !important;">Rechazar</button>
+              <hr>
+            </div>
+          <!--  <div class="image-wrapper">
+
+             <img class="col-xs-6"
+              (touchstart)="openZoom($event, true)"
+              (touchend)="openZoom($event, false)"
+              (touchmove)="positionZoom($event)"
+              [src]="'http://localhost/angularTutorial/angularLearn/registro/back/controller/'+item.archivo"
+             />
+            </div>
+            <image-zoom class="col-xs-6"
+             *ngIf="showZoom"
+             [src]="'http://localhost/angularTutorial/angularLearn/registro/back/controller/'+item.archivo"
+             [xPos]="xPos"
+             [yPos]="yPos">
+           </image-zoom>-->
+
+
+          </td>
+      </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+            <td colspan="5">
+                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+            </td>
+        </tr>
+      </tfoot>
+  </table>
+  </div>
+</div><!-- CIERRA PESTAÑA DE PAGOS -->
+
+<div class="container animated fadeIn fast col-xs-12" *ngIf="mensaje==true">
+  <div class="btn-group" role="group" aria-label="..." style="margin: 1em;" class="text-center">
+    <button type="button" class="btn btn-default"
+      routerLinkActive="active"
+      (click)="mensaje=false">Ver pagos</button>
+
+
+      <div class="col-xs-12 divBackground">
+        <div class=" col-sm-10 col-sm-offset-1">
+
+        <h1>Mensajes</h1>
+        <div class="col-xs-2 col-xs-push-5 center-block" style="margin-top:1.5em;">
+
+            <label class="label-control">Mensajes por página</label>
+            <select class="form-control input-sm col-xs-2" [(ngModel)]="rowsOnPageMsg">
+                <option [ngValue]="5">5</option>
+                <option [ngValue]="10">10</option>
+                <option [ngValue]="15">15</option>
+            </select>
+        </div>
+
+        <div *ngIf="mensajeStatusEnvio == true"
+        style="margin-bottom: 3em; margin-top:.7em; padding:1.5em !important;"
+        class="alert alert-success alert-dismissable  animated fadeIn fast col-sm-12">
+          <a href="#" style="font-size:2.5em;" (click)="mensajeStatusEnvio = false" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Mensaje enviado</strong></div>
+
+          <table class="table table-responsive borderless animated fadeIn fast " [mfData]="datatable_comentarios | filterBy : filtro_dataMsg" #mf="mfDataTable" #mf="mfDataTable"
+                       [mfRowsOnPage]="rowsOnPageMsg"  [(mfSortOrder)]="sortOrderMsg">
+          <thead>
+          <tr>
+
+              <th class="col-xs-3">
+                Mas recientes
+                <!--  <mfDefaultSorter by="id_persona">Nombre</mfDefaultSorter>-->
+              </th>
+          </tr>
+
+          </thead>
+          <tbody class=" animated fadeIn fast ">
+          <tr *ngFor="let item of mf.data; let i = index" class="tr-data-user">
+
+              <td class="col-xs-3" >
+
+                <div id="panel-group" >
+                  <div class="panel panel-default" >
+                    <div class="panel-heading" (click) = "obtenerMensajeUsuario(item.id_persona, i)">
+                       <h5 class="panel-title text-left">{{item.paterno+" "+item.materno+" "+item.nombre}}
+                          <i class='glyphicon'
+                            [class.glyphicon-chevron-right] = "i != current_arrow"
+                            [class.glyphicon-chevron-down] = "i == current_arrow" ></i>
+                       </h5>
+                    </div>
+
+                     <div class="collapse1" class="panel-collapse" [ngClass]="{'collapse': current_arrow != i }">  <!--[ngClass]="{'collapse': current_arrow != i}"-->
+                      <div class="panel-body">
+
+
+                        <div class="col-xs-12">
+                              <p class="text-left"><small>Email: </small>{{item.email}}</p>
+                              <p class="text-left"><small>Teléfono: </small>{{item.telefono}}</p>
+                            <!--  <p>{{ item['archivo'].substring(  item['archivo'].length-3, item['archivo'].length)}}</p>-->
+                              <hr>
+                        </div>
+
+
+
+
+                        <div class="row" style="margin: 1.5em 1.5em 1.5em -.5em">
+                          <div class="animated fadeIn fast col-xs-12" *ngFor="let mensje of data_mensaje; let j = index">
+                            <div class="divMensajes col-xs-12">
+                              <!-- SI EL ESTATUS ES 1 ES DEL USUARIO , SI ES 0 ES DEL ADMINISTRADOR -->
+                              <h5 *ngIf="mensje.estatus == 1">{{"#"+(j+1)+" "+item.nombre}}</h5>
+                              <h5 *ngIf="mensje.estatus == 0">{{"#"+(j+1)+" Adminsitrador: "}}</h5>
+                              <small class="text-right col-xs-12"><b>{{mensje.fecha}}</b></small>
+                              <p class="col-xs-12 text-left">{{mensje.mensaje}}</p>
+                            </div>
+                            <!-- SOLO MOSTRAR RESPUESTA EN CASO DE HABER-->
+                            <div class="divMensajeResp col-xs-11 col-xs-push-1" *ngIf="mensje.respuesta != '' ">
+                              <h5 *ngIf="mensje.estatus == 0"> {{item.nombre}} </h5>
+                              <h5 *ngIf="mensje.estatus == 1"> Administrador: </h5>
+                              <p class="col-xs-12 text-left">{{mensje.respuesta}}</p>
+                            </div>
+
+                            <!--   RESPONDER A MENSAJE DEL USUARIO SI NO HAY RESPUESTA  -->
+                              <div class="col-xs-12 tableButtons " *ngIf="mensje.respuesta == '' && lastIdMsg == mensje.id_mensaje && mensje.estatus == 1">
+                                <small class="text-left">Responder mensaje:</small>
+                                <textarea trim
+                                class="form-control textareaPerfil text-center"
+                                rows="4"
+                                style="min-width: 100%"
+                                #comentarioRespuestaUsuario
+                                [(ngModel)]="defaultValue"
+                                maxlength="250" minlength="10"></textarea>
+
+                                <small class="col-xs-12 text-left">Minimo 10 caracteres, maximo 250</small>
+                                <button type="button" class="btn btn-primary text-center"
+                                style="margin-bottom: .7em; margin-top:.7em;"
+                                (click)="responderComentario(mensje.id_mensaje, comentarioRespuestaUsuario.value);">Enviar</button>
+
+                            </div>
+
+                        <!--&& lastIdMsg == item.id_mensaje -->
+                            <!--   CREAR NUEVA INSTANCIA  SI EL ULTIMO MENSAJE ES DEL ADMINISTRADOR
+                                 O CREAR NUEVA INSTANCIA  SI EL ULTIMO MENSAJE ES DEL USUARIO Y TIENE RESPUESTA DEL ADMINISTRADOR-->
+                            <div *ngIf="mensje.estatus == 0 && lastIdMsg == mensje.id_mensaje
+                                        || mensje.estatus == 1 && mensje.respuesta != '' && lastIdMsg == mensje.id_mensaje"  class="col-xs-12 tableButtons">
+                                <small>Nuevo mensaje:</small>
+                                <textarea trim
+                                class="form-control textareaPerfil"
+                                rows="4"
+                                #comentarioEstatus
+                                [(ngModel)]="defaultValue"
+                                maxlength="250" minlength="10"></textarea>
+
+
+                                <small class="col-xs-12 text-left">Minimo 10 caracteres, maximo 250</small>
+                                <button type="button"
+                                class="btn btn-primary"
+                                style="margin-bottom: .7em; margin-top:.7em;"
+                                (click)="enviarComentario(item.id_persona, comentarioEstatus.value);">Enviar</button>
+
+
+                            </div>
+
+
+                          </div>
+                        </div>
+
+
+
+
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+
+              </td>
+          </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+                <td colspan="5">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]" (click) = "current_arrow = -1"></mfBootstrapPaginator>
+                </td>
+            </tr>
+          </tfoot>
+      </table>
+      </div>
+    </div><!-- CIERRA DIV QUE LIMITA WIDTH -->
+  </div><!-- CIERRA CUERPO DE: "MENSAJES" -->
+</div>

@@ -1,0 +1,771 @@
+<app-navbar></app-navbar>
+<!--<div class="container main-container animated fadeIn fast">-->
+<div class="container animated fadeIn fast col-xs-12"  style="margin-right:0px; padding-right:0px">
+  <div class="col-xs-12 row "  style="margin-right:0px; padding-right:0px">
+    <div class="col-sm-7 contenedor">
+
+
+
+
+      <form [formGroup]="forma" (ngSubmit)="guardar()" #formaS="ngForm" (keydown.enter)="$event.preventDefault()" class="col-sm-12" >
+      <!--  <div class="form-group row">
+          <div class="col-md-9" formArrayName="cedula">
+            <label for="cedula">cedula: </label>
+            <input *ngFor="let ced of forma.controls['cedula'].controls; let i = index"
+            [formControlName]="i"
+            type="text"
+            class="form-control"
+            placeholder="buscar cedula"
+            (keyup.enter)="buscarCedula()">
+          </div>
+          <button (click)="agregarCedula()" type="button" class="btn btn-primary">Otra cedula</button>
+          <button type="button" class="btn btn-outline-info" name="button" (click)="buscarCedula(inputCedula.value)">Buscar cedula</button>
+        </div>-->
+        <div class=" col-sm-12 labelTitulo" >
+            <h1>Registro</h1>
+        </div>
+          <div class="form-group row" [ngClass]="{ 'has-error':forma.get('cedula').errors?.pattern &&
+                                                                forma.get('cedula').touched || this.labelCedula == true,
+                                                                'has-feedback': forma.get('cedula').errors?.pattern,
+                                                                'has-feedback': this.labelCedula == true}">
+              <div class="col-md-12" style="margin-bottom: 1.3em !important;">
+                <label for="cedula" class="col-sm-12">cedula: </label>
+                <div class="col-sm-5">
+                  <input
+                  maxlength="15"
+                  FormControl
+                  formControlName="cedula"
+                  type="text"
+                  class="form-control form-control-danger"
+                  placeholder="Buscar cedula"
+                  (keyup.enter)="buscarCedula()"
+                  >
+                </div>
+                <button type="button" class="btn btn-primary col-sm-3" name="button"
+                (click)="buscarCedula()"
+                [disabled]="forma.get('cedula').errors?.pattern || forma.get('cedula').errors?.required || cedulaButtonIsEnabled == false">{{cedulaText}}</button>
+
+                <!--<small *ngIf="forma.controls['cedula'].errors?.required"
+                        class="col-sm-12 control-label" for="inputError">
+                  Este campo es obligatorio.
+                </small>-->
+                <small *ngIf="forma.controls['cedula'].errors?.pattern" class="col-sm-12 control-label">
+                  El campo es numerico.
+                </small>
+                <small *ngIf="this.labelCedula == true" class="col-sm-12 control-label">
+                  Hubo un error con sus datos
+                </small>
+              </div>
+          </div>
+
+          <!-- NOMBRE -->
+        <div class="form-group row" [ngClass]="{ 'has-error': forma.get('nombre').errors?.required &&
+                                                              forma.get('nombre').touched,
+                                                              'has-feedback': forma.get('nombre').errors?.required}">
+            <div class="col-sm-12">
+              <label for="nombre" class="col-sm-12">Nombre: </label>
+              <div class="col-sm-9">
+                <input
+                maxlength="60"
+                  FormControl
+                    formControlName="nombre"
+                    type="text"
+                    class="form-control form-control-danger"
+                    placeholder="Nombre(s)">
+              </div>
+                  <div  class="smallAdvice col-xs-12">
+                    <small *ngIf="forma.controls['nombre'].errors?.required"
+                            class="col-sm-12 control-label" for="inputError">
+                      Este campo es obligatorio.
+                    </small>
+                    <small *ngIf="forma.controls['nombre'].errors?.minlength"
+                            class="col-sm-12 control-label" for="inputError">
+                      por lo menos 3 caracteres
+                    </small>
+                  </div>
+
+            </div>
+          </div>
+
+
+
+          <!-- PATERNO -->
+          <div class="form-group row" [ngClass]="{ 'has-error': forma.get('paterno').errors?.required &&
+                                                                forma.get('paterno').touched,
+                                                                'has-feedback': forma.get('paterno').errors?.required}">
+              <div class="col-sm-12">
+              <label for="paterno" class="col-sm-12">Paterno: </label>
+              <div class="col-sm-9">
+                  <input
+                  maxlength="50"
+                  FormControl
+                  formControlName="paterno"
+                  type="text"
+                  class="form-control form-control-danger"
+                  placeholder="A. Paterno">
+              </div>
+              <div  class="smallAdvice col-xs-12">
+                <small *ngIf="forma.controls['paterno'].errors?.required"
+                        class="col-sm-12 control-label" for="inputError">
+                  Este campo es obligatorio.
+                </small>
+                <small *ngIf="forma.controls['paterno'].errors?.minlength"
+                        class="col-sm-12 control-label" for="inputError">
+                  por lo menos 3 caracteres
+                </small>
+              </div>
+              </div>
+          </div>
+
+
+          <!-- MATERNO -->
+          <div class="form-group row" [ngClass]="{ 'has-error': forma.get('materno').errors?.required &&
+                                                                forma.get('materno').touched,
+                                                                'has-feedback': forma.get('materno').errors?.required}">
+              <div class="col-sm-12">
+              <label for="materno" class="col-sm-12">Materno: </label>
+              <div class="col-sm-9">
+                  <input
+                  maxlength="50"
+                  FormControl
+                  formControlName="materno"
+                  type="text"
+                  class="form-control form-control-danger"
+                  placeholder="A. Materno">
+              </div>
+              <div  class="smallAdvice col-xs-12">
+                <small *ngIf="forma.controls['materno'].errors?.required"
+                        class="col-sm-12 control-label" for="inputError">
+                  Este campo es obligatorio.
+                </small>
+                <small *ngIf="forma.controls['materno'].errors?.minlength"
+                        class="col-sm-12 control-label" for="inputError">
+                  por lo menos 3 caracteres
+                </small>
+              </div>
+              </div>
+          </div>
+
+
+          <div class="form-group row " [ngClass]="{ 'has-error': forma.get('genero').errors?.required &&
+                                                                forma.get('genero').touched,
+                                                                'has-feedback': forma.get('genero').errors?.required}">
+            <div class="col-sm-12">
+              <label for="genero" class="col-sm-12">Genero: </label>
+              <div class="col-sm-9">
+                <div class="radioGenero">
+                 <label>
+                   <input
+                   type="radio"
+                   FormControl
+                   value="1"
+                   formControlName="genero" placeholder=""> Hombre</label>
+                </div>
+                <div class="radioGenero">
+                 <label><input
+                   type="radio"
+                   FormControl
+                   value="2"
+                 formControlName="genero" placeholder=""> Mujer</label>
+                </div>
+              </div>
+              <div  class="smallAdvice col-xs-12">
+                <small *ngIf="forma.controls['genero'].errors?.required"
+                        class="col-sm-12 control-label" >
+                  Este campo es obligatorio
+                </small>
+              </div>
+            </div>
+          </div>
+
+
+
+              <!-- CINTA EDUCACION-->
+              <div class=" col-sm-12 labelTitulo">
+                  <b>Educación</b>
+              </div>
+
+
+              <!-- INSTITUCION -->
+              <!--
+              [ngClass]="{ 'has-error': forma.get('institucion').errors?.required &&
+                                                                    forma.get('institucion').touched,
+                                                                    'has-feedback': forma.get('institucion').errors?.required}"
+              -->
+              <div class="form-group row" >
+                  <div class="col-sm-12">
+                  <label for="institucion" class="col-sm-12">Institución de procedencia: </label>
+                  <div class="col-sm-9">
+                      <input
+                      maxlength="100"
+                      FormControl
+                      formControlName="institucion"
+                      type="text"
+                      class="form-control form-control-danger"
+                      placeholder="Institucion">
+                  </div>
+                  <div  class="smallAdvice col-xs-12">
+                    <!--<small *ngIf="forma.controls['institucion'].errors?.required"
+                            class="col-sm-12 control-label" for="inputError">
+                      Este campo es obligatorio.
+                    </small>
+                    <small *ngIf="forma.controls['institucion'].errors?.minlength"
+                            class="col-sm-12 control-label" for="inputError">
+                      por lo menos 3 caracteres
+                    </small>-->
+                  </div>
+                  </div>
+              </div>
+
+              <!-- TITULO -->
+              <!--
+              [ngClass]="{ 'has-error': forma.get('titulo').errors?.required &&
+                                                                    forma.get('titulo').touched,
+                                                                    'has-feedback': forma.get('titulo').errors?.required}"
+              -->
+              <div class="form-group row" >
+                  <div class="col-sm-12">
+                  <label for="titulo" class="col-sm-12">Titulo: </label>
+                  <div class="col-sm-9">
+                      <input
+                      maxlength="50"
+                      FormControl
+                      formControlName="titulo"
+                      type="text"
+                      class="form-control form-control-danger"
+                      placeholder="Titulo">
+                  </div>
+                  <div  class="smallAdvice col-xs-12">
+                    <!--<small *ngIf="forma.controls['titulo'].errors?.required"
+                            class="col-sm-12 control-label" for="inputError">
+                      Este campo es obligatorio.
+                    </small>
+                    <small *ngIf="forma.controls['titulo'].errors?.minlength"
+                            class="col-sm-12 control-label" for="inputError">
+                      por lo menos 3 caracteres
+                    </small>-->
+                  </div>
+                  </div>
+              </div>
+              <!-- ESCUELA EN LA QUE LABORA ACTUALMENTE-->
+              <div class="form-group row" [ngClass]="{ 'has-error': forma.get('escuelactual').errors?.required &&
+                                                                    forma.get('escuelactual').touched,
+                                                                    'has-feedback': forma.get('escuelactual').errors?.required}">
+                  <div class="col-sm-12">
+                  <label for="titulo" class="col-sm-12">Escuela en la trabaja actualmente: </label>
+                  <div class="col-sm-9">
+                      <input
+                      maxlength="150"
+                      FormControl
+                      formControlName="escuelactual"
+                      type="text"
+                      class="form-control form-control-danger"
+                      placeholder="Escuala actual">
+                  </div>
+                  <div  class="smallAdvice col-xs-12">
+                    <small *ngIf="forma.controls['escuelactual'].errors?.required"
+                            class="col-sm-12 control-label" for="inputError">
+                      Este campo es obligatorio.
+                    </small>
+                    <small *ngIf="forma.controls['escuelactual'].errors?.minlength"
+                            class="col-sm-12 control-label" for="inputError">
+                      por lo menos 3 caracteres
+                    </small>
+                  </div>
+                  </div>
+              </div>
+
+              
+              <!-- CINTA EDUCACION-->
+              <div class=" col-sm-12 labelTitulo">
+                  <b>Dirección</b>
+              </div>
+
+
+              <!-- CODIGO POSTAL -->
+              <div class="form-group row" [ngClass]="{ 'has-error': forma.get('cp').errors?.required &&
+                                                                    forma.get('cp').touched || this.labelCp == true,
+                                                                    'has-feedback': forma.get('cp').errors?.required}">
+                  <div class="col-sm-12">
+                  <label for="cp" class="col-sm-12">Código Postal: </label>
+                  <div class="col-sm-4">
+                      <input
+                      maxlength="7"
+                      FormControl
+                      formControlName="cp"
+                      type="text"
+                      class="form-control form-control-danger"
+                      placeholder="Código Postal">
+                  </div>
+
+                  <button type="button" class="btn btn-primary col-sm-3" name="button"
+                  (click)="buscarCP()"
+                  [disabled]="forma.get('cp').errors?.pattern || forma.get('cp').errors?.required || cpButtonIsEnabled == false">
+                  {{cpText}}</button>
+                  <div  class="smallAdvice col-xs-12">
+                    <small *ngIf="forma.controls['cp'].errors?.required"
+                            class="col-sm-12 control-label" for="inputError">
+                      Este campo es obligatorio y numerico.
+                    </small>
+                    <small *ngIf="forma.controls['cp'].errors?.pattern" class="col-sm-12 control-label">
+                      No es el formato correcto
+                    </small>
+                    <small *ngIf="this.labelCp == true" class="col-sm-12 control-label">
+                      No existe este código postal
+                    </small>
+                  </div>
+                  </div>
+              </div>
+
+
+              <!-- ESTADO -->
+              <div class="form-group row" [ngClass]="{ 'has-error': forma.get('estado').errors?.required &&
+                                                                    forma.get('estado').touched,
+                                                                    'has-feedback': forma.get('estado').errors?.required}">
+                  <div class="col-sm-12">
+                  <label for="cp" class="col-sm-12">Estado: </label>
+                  <div class="col-sm-9">
+                      <input
+                      maxlength="20"
+                      FormControl
+                      formControlName="estado"
+                      type="text"
+                      class="form-control form-control-danger"
+                      placeholder="Estado">
+                  </div>
+                  <div  class="smallAdvice col-xs-12">
+                    <small *ngIf="forma.controls['estado'].errors?.required"
+                            class="col-sm-12 control-label" for="inputError">
+                      Este campo es obligatorio.
+                    </small>
+                  </div>
+                  </div>
+              </div>
+
+
+              <!-- MUNICIPIO -->
+              <div class="form-group row" [ngClass]="{ 'has-error': forma.get('municipio').errors?.required &&
+                                                                    forma.get('municipio').touched,
+                                                                    'has-feedback': forma.get('municipio').errors?.required}">
+                  <div class="col-sm-12">
+                  <label for="cp" class="col-sm-12">Municipio: </label>
+                  <div class="col-sm-9">
+                      <input
+                      maxlength="70"
+                      FormControl
+                      formControlName="municipio"
+                      type="text"
+                      class="form-control form-control-danger"
+                      placeholder="Municipio">
+                  </div>
+                  <div  class="smallAdvice col-xs-12">
+                    <small *ngIf="forma.controls['municipio'].errors?.required"
+                            class="col-sm-12 control-label" for="inputError">
+                      Este campo es obligatorio.
+                    </small>
+                  </div>
+                  </div>
+              </div>
+
+              <!-- ASENTAMIENTO -->
+              <div class="form-group row" [ngClass]="{ 'has-error': forma.get('asentamiento').errors?.required &&
+                                                                    forma.get('asentamiento').touched,
+                                                                    'has-feedback': forma.get('asentamiento').errors?.required}">
+                  <div class="col-sm-12">
+                  <label for="cp" class="col-sm-12">Asentamiento: </label>
+                  <div class="col-sm-9">
+                  <!--  <input
+                    maxlength="70"
+                    FormControl
+                    formControlName="asentamiento"
+                    type="text"
+                    class="form-control form-control-danger"
+                    placeholder="Asentamiento/colonia">-->
+                      <select
+                      FormControl
+                      formControlName="asentamiento"
+                      class="form-control form-control-danger">
+                        <option value="-1">Seleccione un asentamiento</option>
+                        <option *ngFor="let asent of asentamiento"
+                        [value]="asent">{{asent}}</option>
+                      </select>
+                  </div>
+                  <div  class="smallAdvice col-xs-12">
+                    <small *ngIf="forma.controls['asentamiento'].errors?.required || forma.controls['asentamiento'].value == -1"
+                            class="col-sm-12 control-label" for="inputError">
+                      Este campo es obligatorio.
+                    </small>
+                  </div>
+                  </div>
+              </div>
+
+
+
+
+              <!-- CALLE -->
+              <div class="form-group row" [ngClass]="{ 'has-error': forma.get('calle').errors?.required &&
+                                                                    forma.get('calle').touched,
+                                                                    'has-feedback': forma.get('calle').errors?.required}">
+                  <div class="col-sm-12">
+                  <label for="cp" class="col-sm-12">Calle: </label>
+                  <div class="col-sm-9">
+                      <input
+                      maxlength="50"
+                      FormControl
+                      formControlName="calle"
+                      type="text"
+                      class="form-control form-control-danger"
+                      placeholder="Calle">
+                  </div>
+                  <div  class="smallAdvice col-xs-12">
+                    <small *ngIf="forma.controls['calle'].errors?.required"
+                            class="col-sm-12 control-label" for="inputError">
+                      Este campo es obligatorio.
+                    </small>
+                  </div>
+                  </div>
+              </div>
+
+
+
+
+
+              <!-- NUMERO EXTERIOR -->
+              <div class="form-group row " [ngClass]="{ 'has-error':  forma.get('exterior').errors?.pattern}">
+                  <div class="col-sm-12">
+                 <label for="cp" class="col-sm-12">Número Exterior: </label>
+                  <div class="col-sm-3">
+                      <input
+                      maxlength="15"
+                      FormControl
+                      formControlName="exterior"
+                      type="text"
+                      class="form-control form-control-danger"
+                      placeholder="No. Exterior">
+                  </div>
+                  <div  class="smallAdvice col-xs-12">
+                    <small *ngIf="forma.controls['exterior'].errors?.required"
+                            class="col-sm-12 control-label" for="inputError">
+                      Este campo es obligatorio.
+                    </small>
+                    <small *ngIf="forma.get('exterior').errors?.pattern"
+                            class="col-sm-12 control-label" for="inputError">
+                      Este campo es numerico
+                    </small>
+                  </div>
+                  </div>
+              </div>
+
+
+
+              <!-- NUMERO INTERIOR -->
+              <div class="form-group row " [ngClass]="{ 'has-error': forma.get('interior').errors?.pattern}">
+                  <div class="col-sm-12">
+                  <label for="cp" class="col-sm-12">Número Interior: </label>
+                  <div class="col-sm-3">
+                      <input
+                      maxlength="15"
+                      FormControl
+                      formControlName="interior"
+                      type="text"
+                      class="form-control form-control-danger"
+                      placeholder="No. Interior">
+                  </div>
+                  <div  class="smallAdvice col-xs-12">
+                    <small *ngIf="forma.controls['interior'].errors?.required"
+                            class="col-sm-12 control-label" for="inputError">
+                      Este campo es obligatorio.
+                    </small>
+                    <small *ngIf="forma.get('interior').errors?.pattern"
+                            class="col-sm-12 control-label" for="inputError">
+                      Este campo es numerico
+                    </small>
+                  </div>
+                  </div>
+              </div>
+
+
+
+              <!-- CINTA DATOS DEL USUARIO -->
+                <div class=" col-sm-12 labelTitulo">
+                    <b>Datos de usuario</b>
+                </div>
+              <hr>
+
+                    <!-- NOMBRE DE USUARIO-->
+                    <div class="form-group row" [ngClass]="{ 'has-error': forma.get('username').errors?.required &&
+                                                                          forma.get('username').touched,
+                                                                          'has-feedback': forma.get('username').errors?.required}">
+                        <div class="col-sm-12">
+                          <label for="nombre" class="col-sm-12">Nombre de usuario: </label>
+                          <div class="col-sm-9">
+                            <input
+                            maxlength="30"
+                              FormControl
+                                formControlName="username"
+                                type="text"
+                                class="form-control form-control-danger"
+                                placeholder="Nombre de usuario">
+                          </div>
+                          <div  class="smallAdvice col-xs-12">
+                              <small *ngIf="forma.controls['username'].errors?.required"
+                                      class="col-sm-12 control-label" for="inputError">
+                                Este campo es obligatorio.
+                              </small>
+                              <small *ngIf="forma.controls['username'].errors?.minlength"
+                                      class="col-sm-12 control-label" for="inputError">
+                                por lo menos 3 caracteres
+                              </small>
+                          </div>
+                        </div>
+                      </div>
+
+
+          <!-- EMAIL-->
+                    <div class="form-group row" [ngClass]="{ 'has-error': forma.get('email').errors?.required &&
+                                                                          forma.get('email').touched || this.labelEmail == false,
+                                                                          'has-feedback': forma.get('email').errors?.required}">
+                      <div class="col-sm-12">
+                        <label for="email" class="col-sm-12">Email: </label>
+                        <div class="col-sm-9">
+                          <input
+                          maxlength="70"
+                          FormControl
+                          type="email"
+                            formControlName="email"
+                          class="form-control form-control-danger"
+                          placeholder="Correo electronico">
+                        </div>
+                        <div  class="smallAdvice col-xs-12">
+                          <small *ngIf="forma.controls['email'].errors?.required" class="col-sm-12 control-label">
+                            Este campo es obligatorio
+                          </small>
+                          <small *ngIf="forma.controls['email'].errors?.pattern" class="col-sm-12 control-label">
+                            No es el formato correcto
+                          </small>
+                          <small *ngIf="this.labelEmail == false" class="col-sm-12 control-label">
+                            Ya se ha realizado un registro con esta cuenta de correo electrónico.
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+              <!-- CONTRASEÑA-->
+                    <div class="form-group row" [ngClass]="{ 'has-error': forma.get('passwordI').errors?.required &&
+                                                                          forma.get('passwordI').touched || forma.get('passwordI').errors?.pattern || forma.controls['passwordI'].errors?.minlength,
+                                                                          'has-feedback': forma.get('passwordI').errors?.required}">
+                        <div class="col-sm-12">
+                          <label for="passwordI" class="col-sm-12">Contraseña: </label>
+                          <div class="col-sm-9">
+                            <input
+                            maxlength="25"
+                              FormControl
+                                formControlName="passwordI"
+                                type="password"
+                                class="form-control form-control-danger"
+                                pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                                placeholder="Contraseña">
+                          </div>
+                          <div  class="smallAdvice col-xs-12">
+                              <small *ngIf="forma.controls['passwordI'].errors?.required"
+                                      class="col-sm-12 control-label" for="inputError">
+                                Este campo es obligatorio.
+                              </small>
+                              <small *ngIf="forma.controls['passwordI'].errors?.minlength"
+                                      class="col-sm-12 control-label" for="inputError">
+                                por lo menos 8 caracteres,
+                              </small>
+                              <small *ngIf="forma.get('passwordI').errors?.pattern"
+                                      class="col-sm-12 control-label" for="inputError">
+                                Una mayuscula, una minuscula y un caracter espespecial ej: #$%/+-
+                              </small>
+                              <small class="col-sm-12 control-label" for="inputError">
+                                Una mayuscula, una minuscula y un caracter espespecial ej: #$%/+-
+                              </small>
+                          </div>
+                        </div>
+                      </div>
+
+              <!-- REPETIR CONTRASEÑA-->
+                      <div class="form-group row" [ngClass]="{ 'has-error': forma.get('passwordError').errors?.required &&
+                                                                            forma.get('passwordError').touched || forma.get('passwordError').invalid,
+                                                                            'has-feedback': forma.get('passwordError').errors?.required}">
+                          <div class="col-sm-12">
+                            <label for="passwordI" class="col-sm-12">Repetir: </label>
+                            <div class="col-sm-9">
+                              <input
+                              maxlength="25"
+                                FormControl
+                                  formControlName="passwordError"
+                                  type="password"
+                                  class="form-control form-control-danger"
+                                  placeholder="Repetir contraseña">
+                            </div>
+                            <div  class="smallAdvice col-xs-12">
+                                <small *ngIf="forma.controls['passwordError'].errors?.required"
+                                        class="col-sm-12 control-label" for="inputError">
+                                  Este campo es obligatorio.
+                                </small>
+                                <small *ngIf="forma.controls['passwordError'].errors?.minlength"
+                                        class="col-sm-12 control-label" for="inputError">
+                                  por lo menos 8 caracteres
+                                </small>
+                                <small *ngIf="forma.get('passwordError').invalid"
+                                        class="col-sm-12 control-label" for="inputError">
+                                  La contraseña no coincide
+                                </small>
+                              </div>
+                          </div>
+                        </div>
+
+
+                        <!-- TELEFONO -->
+                          <div class="form-group row" [ngClass]="{ 'has-error': forma.controls['telefono'].errors?.pattern}">
+                            <div class="col-sm-12">
+                              <label for="telefono" class="col-sm-12">Teléfono fijo: </label>
+                              <div class="col-sm-9">
+                                <input
+                                maxlength="10"
+                                FormControl
+                                type="text"
+                                  formControlName="telefono"
+                                class="form-control form-control-danger"
+                                placeholder="Teléfono">
+                              </div>
+                              <div  class="smallAdvice col-xs-12">
+                                <small *ngIf="forma.controls['telefono'].errors?.pattern" class="col-sm-12 control-label">
+                                  No es el formato correcto
+                                </small>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- TELEFONO -->
+                            <div class="form-group row" [ngClass]="{ 'has-error': forma.controls['telefonoCel'].errors?.pattern}">
+                              <div class="col-sm-12">
+                                <label for="telefonoCel" class="col-sm-12">Teléfono celular: </label>
+                                <div class="col-sm-9">
+                                  <input
+                                  maxlength="10"
+                                  FormControl
+                                  type="text"
+                                    formControlName="telefonoCel"
+                                  class="form-control form-control-danger"
+                                  placeholder="Teléfono celular">
+                                </div>
+                                <div  class="smallAdvice col-xs-12">
+                                  <small *ngIf="forma.controls['telefonoCel'].errors?.pattern" class="col-sm-12 control-label">
+                                    No es el formato correcto
+                                  </small>
+                                </div>
+                              </div>
+                            </div>
+
+
+
+    <!--[disabled]="!forma.valid"-->
+        <div class="form-group">
+          <button
+          [disabled]="!forma.valid || forma.controls['asentamiento'].value == -1 || this.labelCp == true || this.disableSavebutton == false"
+          class="btn btn-primary"
+          type="submit">Agregar usuario</button>
+        </div>
+      <!--  {{forma.valid}}
+        <br>
+        <hr>
+        {{forma.status}}-->
+      </form>
+  </div>
+
+
+  <div class="col-sm-5" style="margin-right:0px; padding-right:0px">
+    <div class="col-sm-12 divLogin container" style="margin-right:0px; padding-right:0px">
+      <div class="row formDiv col-sm-10 col-sm-push-1" style="margin-right:0px; padding-right:0px">
+
+        <div class="animated fadeIn fast col-xs-12" *ngIf="showLoginMessage == false ">
+          <div class="alert alert-danger" role="alert">Tu email o contraseña son incorrectos.</div>
+        </div>
+        <form [formGroup]="formaLogin" (ngSubmit)="guardarLogin()" #formaLog="ngForm" (keydown.enter)="$event.preventDefault()" class="col-sm-12 formLoge" >
+
+          <!-- EMAIL-->
+                    <div class="form-group row" [ngClass]="{ 'has-error': formaLogin.get('emailLogin').errors?.required &&
+                                                                          formaLogin.get('emailLogin').touched ||
+                                                                          formaLogin.controls['emailLogin'].errors?.pattern,
+                                                                          'has-feedback': formaLogin.get('emailLogin').errors?.required}">
+                      <div class="col-sm-12">
+                        <!--<label for="email" class="col-sm-12">Email: </label>-->
+                        <div class="col-sm-12 input-group input-group-lg">
+                          <span class="input-group-addon glyphicon glyphicon glyphicon-envelope" id="sizing-addon1" aria-hidden="true"></span>
+
+                          <input
+                          maxlength="70"
+                          FormControl
+                          type="email"
+                            formControlName="emailLogin"
+                          class="form-control form-control-danger"
+                          placeholder="Email">
+                        </div>
+                        <div  class="smallAdvice col-xs-12">
+                          <small *ngIf="formaLogin.controls['emailLogin'].errors?.required" class="col-sm-12 control-label">
+                            Este campo es obligatorio
+                          </small>
+                          <small *ngIf="formaLogin.controls['emailLogin'].errors?.pattern" class="col-sm-12 control-label">
+                            No es el formato correcto
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+
+
+      <!-- CONTRASEÑA-->
+            <div class="form-group row" [ngClass]="{ 'has-error': formaLogin.get('passwordLogin').errors?.required &&
+                                                                  formaLogin.get('passwordLogin').touched,
+                                                                  'has-feedback': formaLogin.get('passwordLogin').errors?.required}">
+                <div class="col-sm-12">
+                  <!--<label for="passwordI" class="col-sm-12">Contraseña: </label>-->
+                  <div class="col-sm-12 input-group input-group-lg">
+                    <span class="input-group-addon glyphicon glyphicon glyphicon-lock" id="sizing-addon1" aria-hidden="true"></span>
+                    <input
+                    minlength="8"
+                      FormControl
+                        formControlName="passwordLogin"
+                        type="password"
+                        class="form-control form-control-danger"
+                        placeholder="Contraseña">
+                  </div>
+                  <div  class="smallAdvice col-xs-12">
+                      <small *ngIf="formaLogin.controls['passwordLogin'].errors?.required"
+                              class="col-sm-12 control-label" for="inputError">
+                        Este campo es obligatorio.
+                      </small>
+                      <small *ngIf="formaLogin.controls['passwordLogin'].errors?.minlength"
+                              class="col-sm-12 control-label" for="inputError">
+                        por lo menos 8 caracteres
+                      </small>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <button
+                [disabled]="!formaLogin.valid"
+                class="btn btn-primary center-block"
+                type="submit">Iniciar sesion</button>
+              </div>
+
+          </form>
+        </div>
+    </div>
+  </div>
+
+
+</div>
+<div class="push"></div>
+</div>
+
+<!--</div>-->
+<footer class="foote col-xs-12">
+ <p style="text-align:center">Copyright © 2017 UNAM, Todos los derechos reservados.</p>
+</footer>

@@ -1,0 +1,574 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+  background-color: #ecf0f1;
+  font-family: ABeeZee;
+}
+.text-left, textarea{
+  text-align: left !important;
+}
+.navar{
+  width: 100% !important;
+}
+textarea{
+  white-space: pre-wrap !important;
+}
+.divMensajes, .divMensajeResp{
+  background-color: #F2F1EF;
+  padding: 1em;
+  margin: 1em;
+}
+.divMensajeResp{
+  background-color: #f2ede3;
+  margin-top: -.5em !important;
+}
+
+.buttonSesionadm{
+  margin-top: -7em !important;
+}
+.divMensajes p{
+  color: #616f7d;
+  white-space: pre-wrap !important;
+  overflow: auto;
+  border-color: silver;
+}
+.textareaPerfil{
+  width: 100%;
+
+  max-width: 100%;
+  min-width: 100%;
+}
+.alerta{
+  margin-top: -.8em !important;
+  font-size: 1.3em !important;
+  text-align: center !important;
+}
+.quitar-label-estado{
+  display: none !important;
+}
+.imgTablePago{
+  width: 62em;
+ height: 35em;
+  overflow: auto;
+  vertical-align: middle;
+}
+/*.tableButtons{
+  background-color:#efefef !important;
+  width: 104%;
+  padding: 2em;
+}*/
+.badgePago{
+  padding: 2em !important;
+  color: #616f7d ;
+  cursor: pointer !important;
+  background-color: #fafbfd !important;
+  font-size: 1em;
+}
+.badgePago span{
+  font-size: 1.5em;
+}
+/*
+========================
+      BUTTON THREE
+========================
+*/
+.btn-three {
+    transition: all 0.5s !important;
+    position: relative !important;
+}
+.btn-three::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1;
+    background-color: rgba(220,224,228,0.20) ;
+    transition: all 0.3s !important;
+}
+.btn-three:hover::before {
+    opacity: 0  !important;
+    transform: scale(0.5,0.5) !important;
+}
+ .btn-three::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
+    opacity: 0 !important;
+    transition: all 0.3s !important;
+    transform: scale(1.2,1.2) !important;
+}
+.b span{
+  background-color: #f39c12 !important;
+}
+.c span{
+  background-color: #27ae60 !important;
+}
+.d span{
+  background-color: #e74c3c !important;
+}
+.b{
+  color:#f39c12 !important;
+}
+.c{
+  color: #27ae60 !important;
+}
+.d{
+  color: #e74c3c !important;
+}
+.a::after{
+      border: 1px solid rgba(127, 140, 141, 0.24) !important;
+}
+.b::after{
+      border: 1px solid rgba(243, 156, 18, 0.68) !important;
+}
+.c::after{
+      border: 1px solid rgba(46, 204, 113, 0.68) !important;
+}
+
+.d::after{
+      border: 1px solid rgba(231, 76, 60, 0.68) !important;
+}
+
+.btn-three:hover::after {
+    opacity: 1 !important;
+    transform: scale(1,1) !important;
+}
+
+
+.form-control { width: 100%; }
+html, body {
+    height: 100%;
+}
+.tr-data-user p{
+  color: #7f8c8d;
+}
+
+.labelPago{
+  padding: .2em .4em .2em .4em !important;
+  color: white !important;
+  cursor: auto !important;
+}
+.tr-data-user small{
+  color: #b28136;
+}
+
+.divLogin label{
+  color: white !important;
+}
+.divBackground{
+  background-color: white;
+  margin-bottom: 1em;
+  padding: 1em;
+}
+
+.formDiv{
+  margin-top: 5em !important;
+}
+.inputFilePago{
+	width: 0.1px !important;
+	height: 0.1px !important;
+	opacity: 0 !important;
+	overflow: hidden !important;
+	position: absolute !important;
+	z-index: -1 !important;
+}
+
+.labelPago{
+    font-size: 1em;
+    color: white;
+    background-color: black;
+    display: inline-block;
+    padding: 1em;
+    border: 1em;
+    cursor: pointer;
+    border-radius: .25em;
+}
+
+.labelPago,
+.labelPago:hover {
+    background-color: #b28136;
+}
+.labelPago:hover {
+    background-color: #b28136;
+    border-color: #204d74;
+}
+
+
+.labelbtnPago{
+    padding: 1em 1em 1em 1em !important;
+    color: white !important;
+    cursor: pointer !important;
+    font-size: 1em;
+    color: white;
+    background-color: #9a7133;
+    display: inline-block;
+    padding: 1em;
+    border: 1em;
+    cursor: pointer;
+    border-radius: .25em;
+}
+
+
+
+.labelbtnPago:hover {
+    background-color: #b28136;
+    border-color: #204d74;
+}
+
+
+
+
+
+.contenedor{
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(1,1,1,0.15);
+
+}
+.main-container{
+  margin-top: 5em;
+}
+.modal-backdrop{
+  z-index: 1 !important;
+}
+.navbar{
+  background-color: #1c3d6c !important;
+  background: linear-gradient(angle, color-stop1, color-stop2);
+  background: -webkit-linear-gradient(left, #1c3d6c , #26588e); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #1c3d6c, #26588e); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #1c3d6c, #26588e); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #1c3d6c , #26588e); /* Standard syntax */
+
+
+  color: #f4f8fd;
+}
+.textNav{
+  color: #f4f8fd;
+  font-size: 2.5em;
+  line-height: 1em;
+}
+.navbar a{
+    color: white!important;
+}
+.perfil-container{
+  margin: 0px;
+  margin-top: -1.4em!important;
+}
+.container{
+  margin: 0px!important;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.fast {
+  -webkit-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    display: none;
+  }
+   animation-timing-function:ease-in-out;
+}
+
+.fadeOut {
+  animation-name: fadeOut;
+  animation-duration: 4s;
+  -webkit-animation-duration: 4s;
+  -moz-animation-duration: 4s;
+
+}
+
+
+
+.labelTitulo{
+  margin-bottom: 2em !important;
+  background-color: #ca923e;
+  color: white;
+  padding: .65em;
+  border-radius: .5em;
+  text-align: center;
+  margin: 1em 0em 1em 0em;
+}
+/*####################################usuarios#########*/
+.userDivLeft{
+  /*  background-color: #1c3d6c ;*/
+    background-color: #ca923e !important;
+    padding: 2em 1em 1em 1em;
+    margin: 0px;
+  /*  padding-top: 1em*/
+}
+.user-div-left-white{
+  background-color: white;
+}
+.div-thumbnails{
+  background-color: white;
+  padding: 2em;
+  box-shadow: 0 1px 2px rgba(1,1,5,.15);
+}
+.thumbnail img{
+  width: 80%
+}
+.thumbnail h1{
+  color: #1c3d6c;
+  font-size: 3em;
+  padding: .70em 0em .70em 0em;
+}
+.thumbnaild{
+  width: 80% !important;
+}
+.thumbnail{
+/*  box-shadow: .1em .1em .9em #bdc3c7;
+  -webkit-box-shadow: 10px 10px 10px #bdc3c7;
+  -moz-box-shadow: 10px 10px 50px #bdc3c7;*/
+}
+
+.thumbnail {
+  transition: box-shadow .3s;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  transition: all .3s ease-in-out;
+  margin-bottom: 5em;
+
+}
+
+/* Pre-render the bigger shadow, but hide it */
+.thumbnail:hover {
+   box-shadow: 0 0 11px rgba(33,33,33,.2);
+   transform: scale(1.05);
+}
+.smallBackY{
+  color: #ecf0f1;
+}
+
+
+.imgUsuario{
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    color: #34495e;
+
+}
+
+.divDataUsuario{
+  color: white;
+  padding: 0px;
+  margin: 0px;
+  padding-bottom: 3em!important;
+}
+
+.divDataUsuario p{
+  color: white;
+  font-size: .9em;
+  padding: 0px;
+}
+
+/*#############################################*/
+.divLogin{
+  padding-bottom: 2.5em;
+  margin: 1em 0em 1em 0em;
+  background-color: #1c3d6c ;
+
+}
+
+#wrap{
+    min-height: 84%;
+     height: auto !important;
+     height: 84%;
+}
+.foote{
+  padding: 1em;
+  background-color: #1c3d6c ;
+  color: white;
+  height: 5.5em;
+  /*margin-top: -1.5em;*/
+
+}
+
+small{
+  color: #7f8c8d;
+
+}
+.smallAdvice{
+    margin-bottom: 1.3em;
+}
+label{
+  color: #1c3d6c ;
+}
+
+.btn{
+  background-color: #b28136!important;
+  color: white;
+  border-color: #8a5f22;
+}
+
+
+@media (max-width: 767px) {
+  .divLogin{
+    height: auto;
+  }
+  .textNav{
+    display: none;
+  }
+}
+
+
+
+/*####################################JVFLOAT#####################################*/
+
+/*
+ * Default jvFloat theme.
+ * modify it as you wish!
+ */
+
+.jvFloat {
+	position: relative;
+	display: inline;
+	margin-top: 1em;
+}
+
+.jvFloat .placeHolder.required {
+	color: red;
+}
+
+/* Start CSS3 Animations on supported browser */
+.jvFloat .placeHolder {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: auto;
+	color: #1c3d6c;
+	font-size: 1;
+	font-weight: bold;
+	-webkit-transform: translate(0, 0);
+	-moz-transform: translate(0, 0);
+	-o-transform: translate(0, 0);
+	-ms-transform: translate(0, 0);
+	transform: translate(0, 0);
+	-webkit-transition: -webkit-transform 150ms, opacity 100ms, visibility 100ms;
+	transition: transform 150ms, opacity 100ms, visibility 100ms;
+	opacity: 0;
+	visibility: hidden;
+	white-space: nowrap;
+}
+
+/*Allows textarea floating placeholder to be positioned distinctly from the normal .placeHolder class
+ * This is required when working with Multiline text areas
+ */
+.jvFloat .placeHolder.textarea {
+	/*top: 0px;*/
+}
+
+.jvFloat .placeHolder.active {
+	display: block;
+	visibility: visible;
+	-webkit-transform: translate(0, -1em);
+	-moz-transform: translate(0, -1em);
+	-o-transform: translate(0, -1em);
+	-ms-transform: translate(0, -1em);
+	transform: translate(0, -1em);
+	-webkit-transition: -webkit-transform 100ms, opacity 120ms, visibility 120ms;
+	transition: transform 100ms, opacity 120ms, visibility 120ms;
+	opacity: 1;
+}
+/* End CSS3 */
+
+/* Legacy browser */
+/*.jvFloat .placeHolder {
+	position: absolute;
+	top: -1em;
+	left: 0;
+	color: #0c61fc;
+	font-size: .85em;
+	font-weight: bold;
+	opacity: 0;
+	visibility: hidden;
+}
+.jvFloat .placeHolder.active {
+	display: block;
+	visibility: visible;
+	opacity: 1;
+}*/
+/* End Legacy */
+/*#########################################################################*/
+.btn-success{
+  background-color: #5cb85c !important;
+  color: #fff;
+  border-color: #398439;
+}
+.btn-success:hover {
+    color: #fff;
+    background-color: #449d44 !important;
+    border-color: #398439;
+}
+.btn-danger {
+    color: #fff;
+    background-color: #d9534f !important;
+    border-color: #d43f3a;
+}
+.btn-danger:hover {
+    color: #fff;
+    background-color: #c9302c !important;
+    border-color: #ac2925;
+}
+
+
+
+/*
+
+
+image-zoom {
+      z-index: 2;
+      border: 2px solid gray;
+      display: inline-block;
+      position: absolute;
+      left: 50%;
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+      .zoomImage {
+        width: 100%;
+        height: 100%;
+        background-position: 50% 50%;
+      }
+}*/
+
+
+
+
+
+
+@font-face {
+    font-family: ABeeZee;
+    src: url(/assets/font/ABeeZee-Regular.otf);
+}

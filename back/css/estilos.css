@@ -1,0 +1,594 @@
+@charset "utf-8";
+/* CSS Document */
+/*Reset de CSS*/
+html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul, table,
+dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,
+a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
+strong, sub, sup, tt, var, legend, fieldset {
+    margin: 0;
+    padding: 0;
+}
+img, fieldset {
+    border: 0;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+    margin: 0;
+}
+/*####################################################*/
+body {
+	background-color:#F9F9F9;
+	text-align:center;
+	/*margin-left:1%;
+	margin-right:1%;
+	margin-bottom: 1%;*/
+}
+h1{
+	font-family: Tangerine_Bold, Verdana, sans-serif, Geneva;
+	text-align:center;
+	color:#666;
+	font-size:42.5px;
+	line-height: 1.4em;
+}
+
+
+#cuerpo, footer{
+	padding-top:1em;
+	padding-bottom: 1em;
+	padding-right:2em;
+	padding-left:2em;
+	margin:0px;
+	width:auto;
+}
+#cuerpo{
+	background-color:#F9F9F9;
+	/*box-shadow:  1em 0em 1em #666;*/
+}
+
+
+
+.boton{
+	width:100%;
+	padding:0px;
+	background:#F9F9F9;
+   /* position: static;*/
+}
+.boton ul { 	
+	list-style: none; 		
+}
+
+
+ul#toc{
+	padding:5px;
+	margin-bottom:5%;
+}
+ul#toc li.current{
+	background:#C8DEDF;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding:5px;
+	border-left:3px solid #CCC;
+	animation:myfirst 2s;
+	-webkit-animation:myfirst 2s;
+}
+ul#toc li.current a{
+		color:#243C3E;
+		 text-shadow: 2px 2px 2px #CCCCCC;
+
+}
+.boton ul li{
+	cursor:pointer;
+	/*line-height: 140%;*/
+	display:inline-block;
+	padding-left:1%;
+	padding-right:1.5%;	
+	border-right:3px solid #CCC;
+}
+.boton ul li:hover{
+ /*border:4px solid #594526;*/ 
+
+}
+.boton ul li a:hover{ 
+ text-shadow: 2px 2px 2px #CCCCCC;
+color:#666;
+}
+
+.boton ul li a{
+	line-height: 100%; 
+	font-family:GeosansLight,sans-serif, Geneva ;
+   	font-size:1.4em;
+	color:#666;
+	text-shadow: 1px 0px 1px #FFFFFF;
+	font-weight:bold;
+}
+
+
+#container {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 2px 1px 5px #C0C0C0;
+    height: 100%;
+    margin: 0 2.5% 20%;
+    min-height: 170px;
+    padding: 3% 5% 7%;
+    text-align: justify;
+    width: 60%;
+    margin-bottom: 10%;
+}
+.textoVista{
+	font-family:Sanford-0103_demo,  sans-serif, Geneva;
+	text-align:justify;
+	font-size:17px;
+	color: #3F5252;
+}
+
+/*.ajaxloader{
+	height:100px;
+	width:100px;
+	background-color:#C30;
+}*/
+
+footer{
+	background-color:#3F565A;
+	/*#314B4F; last*/
+	color:#7E3D01;
+	/*box-shadow:  1em 1em 1em #666;*/
+	
+}
+footer p{
+	font-size:12px;
+	font-weight:bold;
+}
+/*Estilo para imagenes*/
+
+.imgmenu{
+		background-repeat:no-repeat;
+		width:27px;
+		height:27px;
+		background-size:100%;
+		display:inline-block;
+}
+#imguno{
+		background-image:url(../imagenes/icos/profle.png);
+}
+#imguno:hover{
+		background-image:url(../imagenes/icos/profle256.png);
+}
+/*#imguno:hover{
+	background:url(../imagenes/icos/profle256.png);
+}*/
+
+.imagentexto{
+	width:50%;
+	height:auto;
+	opacity:0.7;
+	filter:alpha(opacity=70); /* For IE8 and earlier */
+}
+.imagentextoo{
+	width:20%;
+	height:20%;
+	opacity:0.7;
+	filter:alpha(opacity=70); /* For IE8 and earlier */
+
+}
+#divAreas{
+	background-color:#F7F7F7;
+	text-align:center;
+	vertical-align:middle;
+
+	padding:1%;
+}
+#subarea{
+	background-color:#F0F0F0;
+	text-align:center;
+	vertical-align:middle;
+
+	padding:1%;
+}
+.tabArea{
+	/*position:relative;*/
+	list-style: none; 
+	padding: 5px;
+	display:inline-block; 
+	top:0px; 
+	padding-top:0px;
+	padding-bottom:0px;
+	margin-top:0px;
+	margin-bottom:0px;
+	vertical-align:top;
+	
+	
+}
+/* interfaz para Oferta Labora*/
+/*Areas*/
+
+.tdAreaLaboral, .tdSubAreaLaboral, .tdAreaVerOfertas{
+	background-color:#DBDBDB;
+	list-style: none; 
+	cursor:pointer;
+	text-align:left;
+	display:inline-block;
+	padding:3px;	
+	/*padding-left:3%;
+	padding-right:3%;*/
+	width:100%;
+	height:100%;
+	vertical-align:middle;
+	/*margin:2px 10px 2px 10px;*/
+}
+.tdAreaLaboral:visited, .tdSubAreaLaboral:visited, .tdAreaVerOfertas:visited{
+	background-color:#e3e3e3;
+}
+.tdAreaLaboral:hover, .tdSubAreaLaboral:hover, .tdAreaVerOfertas:hover{
+	background-color:#F3F3F3;
+	box-shadow: 2px 0px 1px #F3F3F3;
+	-webkit-box-shadow: 2px 0px 1px #F3F3F3;
+}
+.tdAreaLaboral:active, .tdSubAreaLaboral:active, .tdAreaVerOfertas:active{
+	background-color:#D9D9D9;
+}
+.tdAreaLaboral a, .tdSubAreaLaboral a, .tdAreaVerOfertas a{
+	line-height: 100%; 
+	font-family:Sanford-0103_demo,  sans-serif, Geneva;
+   	font-size:14px;
+	color:#333;
+	vertical-align:middle;
+	text-decoration:none;
+}
+
+.mensajeTLaboral{
+	font-family:GeosansLight, sans-serif, Geneva;
+	color:#fff;
+	background-color:#9EABAB;
+	text-align:center;
+	vertical-align:central;
+	padding:2px;
+	font-weight:bold;
+	font-size:18px;
+}
+/*CSS para opciones de oferta laboral*/
+.divOfertalaboral{
+		text-align:left;
+	border-bottom:1px solid #333;
+	cursor:pointer;
+}
+.divOfertalaboral:hover{
+	background-color:#F0F5F5;
+}
+.divOfertalaboral:visited{
+	background-color:#d0d0d0;
+}
+.divOfertalaboral:active{
+	background-color:#d0d0d0;
+}
+#ofertalaboral .plaboral{
+	font-family:Sanford-0103_demo,  sans-serif, Geneva;
+	font-weight:bold;
+	color: #333;
+}
+
+#ofertalaboral p{
+	font-family:Sanford-0103_demo,  sans-serif, Geneva;
+	font-size:14px;
+	color: #3F5252;
+		text-align:left;
+}
+#ofertalaboral a{
+	font-family:Sanford-0103_demo,  sans-serif, Geneva;
+	text-decoration:none;
+	font-size:20px;
+	font-weight:bold;
+	color:333;
+	text-align:left;
+}
+#ofertalaboral a:active{
+	color:#333;
+}
+#ofertalaboral a:hover{
+	color:#333;
+}
+#ofertalaboral a:link{
+	color:#333;
+}
+#ofertalaboral a:visited{
+	color:#999;
+}
+#ofertalaboral{
+	text-align:center;
+}
+.divOfertaElegida{
+	text-align:center;
+	margin-left:10%;
+	margin-right:10%;
+}
+.divOfertaElegida table{
+	font-family:Sanford-0103_demo,  sans-serif, Geneva;
+	color:#333;
+	text-align:left;
+	width:100%;
+	border-bottom: 1px solid #333;
+
+}
+.divOfertaElegida tr{
+	border-bottom: 1px solid #333;
+	height:2em;
+}
+/*Boton para postularse*/
+#postular{
+	cursor:pointer;
+	background-color:#408080;
+    border-radius: 0.5em;
+	-webkit-border-radius: 0.5em;
+	color:#DBDBDB;
+	padding:1em;
+	margin-left:30%;
+	margin-right:30%;
+	box-shadow: 2px 2px 2px #326363;
+	-webkit-box-shadow: 2px 2px 2px #326363;
+}
+#postular:hover{
+	background-color:#51A2A2;
+}
+#postular:active{
+	background-color:#3A7474;
+}
+#postular:visited{
+	background-color:#A2BFB9;
+}
+/*######################################################################################*/
+    .messages{
+        float: left;
+        font-family: sans-serif;
+        display: none;
+    }
+
+
+    .error{
+        padding: 10px;
+		-webkit-border-radius: 10px;
+        border-radius: 10px;
+        background: red;
+        color: #fff;
+        font-size: 18px;
+        text-align: center;
+    }
+/*#################################################################################*/
+.ui-widget {
+	font-family:Sanford-0103_demo,  sans-serif, Geneva;
+    font-size: .8em;
+}
+
+.ui-widget-content {
+    background: #F9F9F9;
+    border: 1px solid #3E825C;
+    color: #333;
+}
+
+.ui-dialog {
+    left: 0;
+    outline: 0 none;
+    padding: 0 !important;
+    position: absolute;
+    top: 0;
+}
+
+#success {
+    padding: 0;
+    margin: 0; 
+}
+
+.ui-dialog .ui-dialog-content {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    overflow: auto;
+    position: relative;
+    padding: 1.5em !important;
+	vertical-align:central;
+}
+
+.ui-widget-header {
+    background: #3F5252;
+    border: 0;
+    color: white;
+    font-weight: normal;
+	font-size:14px;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    padding: 0.3em .5em;
+    position: relative;
+	font-size:1.3em;
+}
+.ui-button{
+	color:red;
+	background-color:green;
+}
+
+.formulario table{
+	width:100%;
+	background-color:#E4E4E4;
+	border-radius: 1em;
+	-webkit-border-radius: 1em;
+	padding:1em;
+}
+.tdDescripcion{
+	font-size:16px;
+	font-weight:normal;
+}
+#tableFiles{
+	margin-top:4%;
+	text-align:center;
+}
+
+.formulario input { 
+	background-color: #787878; 
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border: 0px solid  #FFF;
+	padding: .4em .8em;
+
+} 
+
+
+
+.formulario input[type="text"], input[type="email"], input[type="tel"] { 
+	background-color: #C9C9C9;
+		color:#555;
+}
+
+
+.formulario input:invalid {
+	border: 1px solid #40949D;
+}
+.formulario input:required:invalid {
+ 
+	border: 2px solid #40949D;
+	box-shadow: 0px -0px 0px #40949D;
+	-webkit-box-shadow: 0px -0px 0px #40949D;
+	-moz-webkit-box-shadow: 0px -0px 0px #40949D;
+ 
+}
+
+#botonEnviarCurriculum {
+	box-shadow: 2px 2px 4px #333;
+	-webkit-box-shadow:2px 2px 4px #333;
+	-moz-box-shadow:2px 2px 4px #333;
+	color:#fff;
+}
+#botonEnviarCurriculum:hover{
+	background-color:#ccc;
+		color:#333;
+}
+#botonEnviarCurriculum:active{
+	background-color:#333;
+		color:#fff;
+}
+.custom-input-file {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    border-radius: 3px;
+
+	box-shadow: 3px 3px 5px #333;	
+	-webkit-box-shadow: 3px 3px 5px #333;
+	color: white; 
+	background-color: #787878; 
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border: 0px solid  #FFF;
+	padding: .4em .8em;	
+    text-align: center;
+	font-family:Sanford-0103_demo,  sans-serif, Geneva;
+    font-size: 16px;
+	width:30%;
+	left:30%;
+	margin-bottom:1%;
+}
+.custom-input-file:hover {
+    background-color: #A3A3A3;
+    color: #fff;
+}
+.custom-input-file .input-file {
+    margin: 0;
+    padding: 0;outline:0;
+    font-size: 10000px;
+    border: 10000px solid transparent;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    position: absolute;
+    right: -1000px;
+    top: -1000px;
+    cursor: pointer;
+}
+.custom-input-file .archivo {
+    background-color: #000;
+    color: #fff;
+    font-size: 7pt;
+    overflow: hidden;
+}
+.custom-input-file:hover .archivo {
+    background-color: #fff;
+    color: #000;   
+}
+.inputError{
+	box-shadow: 0px 0px 2px 3px #40949D;
+	-webkit-box-shadow:0px 0px 2px 3px #40949D;
+	-moz-box-shadow:0px 0px 2px 3px #40949D;
+}
+.mensajeFormulario{
+	font-family:Sanford-0103_demo,  sans-serif, Geneva;
+	font-size:12px;
+	color:#333;
+}
+#infoArchivo img{
+	width:50px;
+	margin-right:5%;
+}
+#infoArchivo p {
+	text-align:left;
+}
+#fileWrong{
+	color:#40949D;
+	font-size:14px;
+}
+.before{
+	padding: 5px;
+	-webkit-border-radius: 0.5em;
+	border-radius: 0.5em;
+	background: #72CFCF;
+	color: #042F31;
+	font-size: 15px;
+	text-align: center;
+}
+.success{
+	padding: 10px;
+	-webkit-border-radius: 0.5em;
+	border-radius: 0.5em;
+	background: #4FBE3F;
+	color: white;
+	font-size: 15px;
+	text-align: center;
+}
+/*SIN DATOS ESTILO*/
+.noData{
+	margin:5%;
+	border: 7px solid #999;
+	border-radius: 10px;
+	-webkit-border-radius: 7px;
+	padding:5%;
+	vertical-align:central;
+	text-align:center;
+	font-size:40px;
+	font-family:Sanford-0103_demo,  sans-serif, Geneva;
+	color:#666;
+}
+/*Estilos para busqueda*/
+.contentBusqueda{
+	width:100%;
+	text-align:center;
+}
+#filtrosOferta{
+	width:80%;
+	-webkit-border-radius: 10px;
+	border-radius: 5px;
+	background-color:#599A9F;
+	margin-top:2%;
+	margin-bottom:2%;
+	padding:2%;
+}
+#filtrosOferta span{
+	display: inline;
+	padding:2%;
+}
+.btnBusqueda{
+	cursor:pointer;
+	background:#8FC2A7; 
+	height:100%;
+
+}
+

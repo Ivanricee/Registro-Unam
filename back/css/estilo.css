@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+#pie{
+	background-color:#242424;
+	padding:10px;
+	height:30%;
+	width:100%;
+		border-radius: 5px;
+}
+.seccfoot{
+	margin-right:10px;
+	padding:1%;
+	width:30%;
+	color:green;
+	background-color:#353535;
+	display:inline-block;
+	border-radius: 10px;
+}
